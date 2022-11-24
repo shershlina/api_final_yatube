@@ -1,5 +1,6 @@
 from rest_framework import filters, viewsets
 from rest_framework.generics import get_object_or_404
+from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
@@ -39,7 +40,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user, post=post)
 
 
-class FollowViewSet(viewsets.ModelViewSet):
+class FollowViewSet(viewsets.GenericViewSet, CreateModelMixin, ListModelMixin):
     serializer_class = FollowSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = (filters.SearchFilter,)
