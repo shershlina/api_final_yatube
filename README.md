@@ -1,5 +1,5 @@
 # api_final
-Final version of the API part for Yatube
+Final version of the API part for Yatube.
 Made a connection between frontend and backend of Yatube
 
 ### How to launch the project:
